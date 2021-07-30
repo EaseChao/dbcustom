@@ -1,8 +1,8 @@
-package db_utils
+package dbcustom_db
 
 import (
 	"github.com/EaseChao/dbcustom"
-	"github.com/EaseChao/dbcustom/string_utils"
+	"github.com/EaseChao/dbcustom/dbcustom_strings"
 	"strings"
 )
 
@@ -32,10 +32,10 @@ func (q *QueryParams) GetPgList(ita interface{}) *QueryParams {
 func (q *QueryParams) GetList(ita interface{}) *QueryParams {
 	tags := dbcustom.NewAllOfReflect(ita).GetAllKeyTags()
 	for _,tag := range tags {
-		if string_utils.IsNotBlank(tag[dbcustom.QUERY]){ // where
+		if dbcustom_strings.IsNotBlank(tag[dbcustom.QUERY]){ // where
 			querys := strings.Split(tag[dbcustom.QUERY], ",")
 
-			if string_utils.IsNotBlank(tag[dbcustom.JOIN]){ // join
+			if dbcustom_strings.IsNotBlank(tag[dbcustom.JOIN]){ // join
 				//joins := strings.Split(tag[dbcustom.JOIN], ",")
 				q.GetPj(QueryPw(querys[0]),querys[1],tag[dbcustom.JSON],tag[dbcustom.JOIN])
 				continue
@@ -56,7 +56,7 @@ func (q *QueryParams) GetList(ita interface{}) *QueryParams {
 
 // 组装where条件
 func (q *QueryParams) GetPw(qp QueryPw, column, name string) *QueryParams {
-	if value, b := q.getValue(name); string_utils.IsNotBlank(column) && b {
+	if value, b := q.getValue(name); dbcustom_strings.IsNotBlank(column) && b {
 		switch qp {
 			case EQ:		q.Eq(column,value)
 			case NEQ:		q.NotEq(column,value)
@@ -76,7 +76,7 @@ func (q *QueryParams) GetPw(qp QueryPw, column, name string) *QueryParams {
 
 // 组装or条件
 func (q *QueryParams) GetPor(qp QueryPor, column, name string) *QueryParams {
-	if value, b := q.getValue(name); string_utils.IsNotBlank(column) && b {
+	if value, b := q.getValue(name); dbcustom_strings.IsNotBlank(column) && b {
 		switch qp {
 			case EQ_OR:			q.EqOr(column,value)
 			case NEQ_OR:		q.NotEqOr(column,value)
@@ -119,10 +119,10 @@ func (q *QueryParams) GetPol(qp QueryPol, name string) *QueryParams {
 
 // 组装join条件
 func (q *QueryParams) GetPj(qp QueryPw, column, name, join string) *QueryParams {
-	if string_utils.IsBlank(join) {
+	if dbcustom_strings.IsBlank(join) {
 		return q
 	}
-	if value, b := q.getValue(name); string_utils.IsNotBlank(column) && b {
+	if value, b := q.getValue(name); dbcustom_strings.IsNotBlank(column) && b {
 		preload := PreloadPair{Model: join}
 		switch qp {
 			case EQ:		preload.Args = column + " =' " + value + " ' "

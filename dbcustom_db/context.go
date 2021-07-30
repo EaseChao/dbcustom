@@ -1,7 +1,7 @@
-package db_utils
+package dbcustom_db
 
 import (
-	"github.com/EaseChao/dbcustom/string_utils"
+	"github.com/EaseChao/dbcustom/dbcustom_strings"
 	"github.com/kataras/iris/v12"
 	"github.com/mlogclub/simple"
 )
@@ -22,7 +22,7 @@ func NewContext(ctx iris.Context) Context {
 
 // 获取GET参数
 func (c Context) GetValue(name string) string {
-	if string_utils.IsNotBlank(name){
+	if dbcustom_strings.IsNotBlank(name){
 		return c.ctx.FormValue(name)
 	}
 	return ""

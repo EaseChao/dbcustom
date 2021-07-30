@@ -1,4 +1,4 @@
-package db_utils
+package dbcustom_db
 
 import (
 	"gorm.io/gorm"

@@ -1,4 +1,4 @@
-package string_utils
+package dbcustom_strings
 
 import (
 	uuid "github.com/satori/go.uuid"

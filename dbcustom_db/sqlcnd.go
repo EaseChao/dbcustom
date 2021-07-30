@@ -1,4 +1,4 @@
-package db_utils
+package dbcustom_db
 
 type SqlCnd struct {
 	SelectCols []string     	// 要查询的字段，如果为空，表示查询所有字段

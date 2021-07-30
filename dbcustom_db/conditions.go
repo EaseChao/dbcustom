@@ -1,4 +1,4 @@
-package db_utils
+package dbcustom_db
 
 type Conditions struct {
 	Params     []ParamPair  	// 参数
