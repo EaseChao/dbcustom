@@ -1,4 +1,4 @@
-db-custom 
+db-custom
 
 #### 介绍
 go的gorm方法封装,可以自定义db类和context类
