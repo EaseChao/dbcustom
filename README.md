@@ -9,7 +9,7 @@ go的gorm方法封装,可以自定义db类和context类
 1.数据 { 1.查询封装 2.持久封装 3.事务封装 }
 
 #### 快速安装
-go get -u github.com/EaseChao/db-custom
+go get -u github.com/EaseChao/dbcustom
 
 #### go mod 安装
 go mod tidy
